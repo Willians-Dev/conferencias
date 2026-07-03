@@ -48,6 +48,7 @@
         <th>Apellido</th>
         <th>Email</th>
         <th>Teléfono</th>
+        <th>Acciones</th>
       </tr>
     </thead>
 
@@ -58,6 +59,11 @@
         <td>{{ asistente.apellido }}</td>
         <td>{{ asistente.email }}</td>
         <td>{{ asistente.telefono }}</td>
+        <td>
+          <button type="button" (click)="eliminarAsistente(asistente.asistenteId)">
+            Eliminar
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

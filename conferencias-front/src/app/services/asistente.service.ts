@@ -19,4 +19,8 @@ export class AsistenteService {
   crearAsistente(asistente: any): Observable<Asistente> {
     return this.http.post<Asistente>(this.apiUrl, asistente);
   }
+
+  eliminarAsistente(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

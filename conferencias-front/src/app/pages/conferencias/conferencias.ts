@@ -72,4 +72,23 @@ export class Conferencias implements OnInit {
       descripcion: ''
     };
   }
+
+  eliminarConferencia(id: number): void {
+    const confirmar = confirm('¿Está seguro de eliminar esta conferencia?');
+
+    if (!confirmar) {
+      return;
+    }
+
+    this.conferenciaService.eliminarConferencia(id).subscribe({
+      next: () => {
+        alert('Conferencia eliminada correctamente');
+        this.cargarConferencias();
+      },
+      error: (error) => {
+        console.error('Error al eliminar conferencia:', error);
+        alert('No se pudo eliminar la conferencia. Puede tener registros asociados.');
+      }
+    });
+  }
 }

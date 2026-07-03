@@ -65,4 +65,23 @@ export class Asistentes implements OnInit {
       telefono: ''
     };
   }
+
+  eliminarAsistente(id: number): void {
+    const confirmar = confirm('¿Está seguro de eliminar este asistente?');
+
+    if (!confirmar) {
+      return;
+    }
+
+    this.asistenteService.eliminarAsistente(id).subscribe({
+      next: () => {
+        alert('Asistente eliminado correctamente');
+        this.cargarAsistentes();
+      },
+      error: (error) => {
+        console.error('Error al eliminar asistente:', error);
+        alert('No se pudo eliminar el asistente. Puede tener registros asociados.');
+      }
+    });
+  }
 }

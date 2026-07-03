@@ -19,4 +19,8 @@ export class ConferenciaService {
   crearConferencia(conferencia: any): Observable<Conferencia> {
     return this.http.post<Conferencia>(this.apiUrl, conferencia);
   }
+
+  eliminarConferencia(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

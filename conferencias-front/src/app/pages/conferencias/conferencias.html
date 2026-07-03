@@ -48,6 +48,7 @@
         <th>Fecha</th>
         <th>Ubicación</th>
         <th>Descripción</th>
+        <th>Acciones</th>
       </tr>
     </thead>
 
@@ -58,6 +59,11 @@
         <td>{{ conferencia.fecha | date:'yyyy-MM-dd' }}</td>
         <td>{{ conferencia.ubicacion }}</td>
         <td>{{ conferencia.descripcion }}</td>
+        <td>
+          <button type="button" (click)="eliminarConferencia(conferencia.conferenciaId)">
+            Eliminar
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

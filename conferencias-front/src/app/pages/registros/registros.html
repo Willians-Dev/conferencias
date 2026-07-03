@@ -1,0 +1,67 @@
+<h2>Registro de Asistentes a Conferencias</h2>
+
+<div class="card">
+  <h3>Registrar asistencia</h3>
+
+  <form (ngSubmit)="guardarRegistro()">
+    <label>Conferencia:</label>
+    <select
+      [(ngModel)]="nuevoRegistro.conferenciaId"
+      name="conferenciaId"
+      required>
+      <option [ngValue]="0">Seleccione una conferencia</option>
+      <option
+        *ngFor="let conferencia of conferencias"
+        [ngValue]="conferencia.conferenciaId">
+        {{ conferencia.nombre }} - {{ conferencia.fecha | date:'yyyy-MM-dd' }}
+      </option>
+    </select>
+
+    <label>Asistente:</label>
+    <select
+      [(ngModel)]="nuevoRegistro.asistenteId"
+      name="asistenteId"
+      required>
+      <option [ngValue]="0">Seleccione un asistente</option>
+      <option
+        *ngFor="let asistente of asistentes"
+        [ngValue]="asistente.asistenteId">
+        {{ asistente.nombre }} {{ asistente.apellido }} - {{ asistente.email }}
+      </option>
+    </select>
+
+    <button type="submit">Registrar asistente</button>
+  </form>
+</div>
+
+<div class="card">
+  <h3>Listado de registros</h3>
+
+  <p>Total de registros: {{ registros.length }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Conferencia</th>
+        <th>Fecha conferencia</th>
+        <th>Ubicación</th>
+        <th>Asistente</th>
+        <th>Email</th>
+        <th>Fecha registro</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let registro of registros">
+        <td>{{ registro.registroId }}</td>
+        <td>{{ registro.conferencia.nombre }}</td>
+        <td>{{ registro.conferencia.fecha | date:'yyyy-MM-dd' }}</td>
+        <td>{{ registro.conferencia.ubicacion }}</td>
+        <td>{{ registro.asistente.nombre }} {{ registro.asistente.apellido }}</td>
+        <td>{{ registro.asistente.email }}</td>
+        <td>{{ registro.fechaRegistro | date:'yyyy-MM-dd HH:mm' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

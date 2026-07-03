@@ -1,0 +1,64 @@
+<h2>Gestión de Conferencias</h2>
+
+<div class="card">
+  <h3>Registrar conferencia</h3>
+
+  <form (ngSubmit)="guardarConferencia()">
+    <label>Nombre:</label>
+    <input
+      type="text"
+      [(ngModel)]="nuevaConferencia.nombre"
+      name="nombre"
+      required>
+
+    <label>Fecha:</label>
+    <input
+      type="date"
+      [(ngModel)]="nuevaConferencia.fecha"
+      name="fecha"
+      required>
+
+    <label>Ubicación:</label>
+    <input
+      type="text"
+      [(ngModel)]="nuevaConferencia.ubicacion"
+      name="ubicacion"
+      required>
+
+    <label>Descripción:</label>
+    <textarea
+      [(ngModel)]="nuevaConferencia.descripcion"
+      name="descripcion">
+    </textarea>
+
+    <button type="submit">Guardar conferencia</button>
+  </form>
+</div>
+
+<div class="card">
+  <h3>Listado de conferencias</h3>
+
+  <p>Total de conferencias: {{ conferencias.length }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Ubicación</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let conferencia of conferencias">
+        <td>{{ conferencia.conferenciaId }}</td>
+        <td>{{ conferencia.nombre }}</td>
+        <td>{{ conferencia.fecha | date:'yyyy-MM-dd' }}</td>
+        <td>{{ conferencia.ubicacion }}</td>
+        <td>{{ conferencia.descripcion }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

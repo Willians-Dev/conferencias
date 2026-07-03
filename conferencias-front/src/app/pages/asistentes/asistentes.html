@@ -1,0 +1,64 @@
+<h2>Gestión de Asistentes</h2>
+
+<div class="card">
+  <h3>Registrar asistente</h3>
+
+  <form (ngSubmit)="guardarAsistente()">
+    <label>Nombre:</label>
+    <input
+      type="text"
+      [(ngModel)]="nuevoAsistente.nombre"
+      name="nombre"
+      required>
+
+    <label>Apellido:</label>
+    <input
+      type="text"
+      [(ngModel)]="nuevoAsistente.apellido"
+      name="apellido"
+      required>
+
+    <label>Email:</label>
+    <input
+      type="email"
+      [(ngModel)]="nuevoAsistente.email"
+      name="email"
+      required>
+
+    <label>Teléfono:</label>
+    <input
+      type="text"
+      [(ngModel)]="nuevoAsistente.telefono"
+      name="telefono">
+
+    <button type="submit">Guardar asistente</button>
+  </form>
+</div>
+
+<div class="card">
+  <h3>Listado de asistentes</h3>
+
+  <p>Total de asistentes: {{ asistentes.length }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let asistente of asistentes">
+        <td>{{ asistente.asistenteId }}</td>
+        <td>{{ asistente.nombre }}</td>
+        <td>{{ asistente.apellido }}</td>
+        <td>{{ asistente.email }}</td>
+        <td>{{ asistente.telefono }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
